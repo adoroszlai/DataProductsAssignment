@@ -14,6 +14,7 @@ distance <- function(vi, angle, t) {
 max_height_time <- function(g, vi, angle) {
   vi * sin(angle) / g
 }
+# vertical speed at time t
 vertical_speed <- function(g, vi, angle, t) {
   vi * sin(angle) - g * t
 }
@@ -22,6 +23,7 @@ shinyServer(function(input, output) {
 
   gravity <- reactive({ switch (input$location, 'earth' = 9.80665, 'moon' = 1.622) })
   
+  # calculate horizontal position, altitude and vertical speed of ball
   calculate_trajectory <- reactive({
     vi <- input$initial_speed
     angle <- input$angle * pi / 180
@@ -33,7 +35,7 @@ shinyServer(function(input, output) {
     x <- distance(vi, angle, t)
     v <- vertical_speed(g, vi, angle, t)
     
-    # limit data to y >= 0
+    # make data end at 0 altitude
     last <- length(x)
     t[last] <- max_t
     y[last] <- 0
@@ -42,6 +44,7 @@ shinyServer(function(input, output) {
     data.frame(t, x, y, v)
   })
   
+  # calculate x/y limits of the plots (independent of 'angle')
   limits <- reactive({
     vi <- input$initial_speed
     g <- gravity()
@@ -57,6 +60,7 @@ shinyServer(function(input, output) {
     data.frame(t = tlim, x = xlim, y = ylim, v = vlim)
   })
   
+  # create plots
   output$plot <- renderPlot({
     trajectory <- calculate_trajectory()
     lim <- limits()
