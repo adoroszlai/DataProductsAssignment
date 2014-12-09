@@ -1,5 +1,7 @@
 library(shiny)
 
+freq <- 1/100 # frequency with which positions are calculated
+
 shinyServer(function(input, output) {
 
   output$plot <- renderPlot({
@@ -26,7 +28,7 @@ shinyServer(function(input, output) {
     ylim <- c(0, max_height_up)
     xlim <- 2 * ylim
     
-    t <- seq(from = 0, to = 2 * max_height_time_up, by = 1/100)
+    t <- seq(from = 0, to = 2 * max_height_time_up, by = freq)
     y <- height(angle, t)
     x <- distance(angle, t)
     
