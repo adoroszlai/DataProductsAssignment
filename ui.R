@@ -12,11 +12,11 @@ shinyUI(fluidPage(
                   max = 10,
                   value = 5),
       sliderInput("angle",
-                  "Angle (degrees)",
+                  "Angle (degrees):",
                   min = 0,
                   max = 90,
                   value = 30),
-      radioButtons("location", "Location",
+      radioButtons("location", "Location:",
                    choices = list("Earth" = 'earth', "Moon" = 'moon'),
                    selected = 'earth')
     ),
