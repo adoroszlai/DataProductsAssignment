@@ -20,7 +20,7 @@ vertical_speed <- function(g, vi, angle, t) {
 
 shinyServer(function(input, output) {
 
-  gravity <- reactive({ switch (input$location, 'earth' = 9.83, 'moon' = 1.622) })
+  gravity <- reactive({ switch (input$location, 'earth' = 9.80665, 'moon' = 1.622) })
   
   calculate_trajectory <- reactive({
     vi <- input$initial_speed
