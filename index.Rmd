@@ -1,0 +1,70 @@
+---
+title       : Graphing Ball Motion
+subtitle    : 
+author      : Doroszlai, Attila
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## About
+
+The [Ball Motion app](https://adoroszlai.shinyapps.io/ball_motion) simulates a ball thrown to the air.
+
+```{r,echo=FALSE}
+source('functions.R')
+g <- 9.80665
+initial_speed <- 6
+angle <- 42
+```
+
+```{r,echo=FALSE}
+create_plot(
+  calculate_trajectory(g, initial_speed, angle),
+  calculate_plot_limits(g, initial_speed)
+)
+```
+
+(`r initial_speed` m/s initial speed at `r angle` degrees on the Earth)
+
+--- 
+
+## Purpose
+
+The app demonstrates the relationship in this simple physical experiment between inputs:
+
+  * initial speed
+  * angle of throw
+  * gravity
+
+and outputs:
+
+  * altitude reached
+  * horizontal distance covered
+  * time elapsed
+  * vertical speed
+
+--- 
+
+## Functionality
+
+The app draws 4 plots that dynamically adapt to user input:
+
+  * altitude vs. horizontal distance
+  * vertical speed vs. horizontal distance
+  * altitude vs. time
+  * vertical speed vs. time
+
+---
+
+## Usefulness
+
+Users can find out answers eg. for the following questions:
+
+  1. What is the best angle to throw the ball in order to make it land the farthest possible?
+  1. Does initial speed affect the shape of the trajectory?
+  1. How does the strength of gravity affect the time until the ball hits the ground?
