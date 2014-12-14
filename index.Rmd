@@ -1,19 +1,25 @@
 ---
-title       : Graphing Ball Motion
-subtitle    : 
+title       : Ball Motion
+subtitle    : Basic Interactive Physics Experiment
 author      : Doroszlai, Attila
 job         : 
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
-widgets     : []            # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
+framework   : io2012
+highlighter : highlight.js
+hitheme     : tomorrow
+widgets     : []
+mode        : selfcontained
 knit        : slidify::knit2slides
 ---
 
-## About
+## Concept
 
-The [Ball Motion app](https://adoroszlai.shinyapps.io/ball_motion) simulates a ball thrown to the air.
+The [Ball Motion app](https://adoroszlai.shinyapps.io/ball_motion) simulates a ball thrown to the air.  It demonstrates how gravity and initial velocity (speed and angle) affect the trajectory of the ball.
+
+<img src='inputs.png' />
+
+--- 
+
+## Functionality
 
 ```{r,echo=FALSE}
 source('functions.R')
@@ -22,6 +28,8 @@ initial_speed <- 6
 angle <- 42
 ```
 
+The app draws 4 plots that dynamically adapt to user input.  Example with ball thrown at `r initial_speed` m/s initial speed at `r angle` degrees on the Earth:
+
 ```{r,echo=FALSE}
 create_plot(
   calculate_trajectory(g, initial_speed, angle),
@@ -29,42 +37,20 @@ create_plot(
 )
 ```
 
-(`r initial_speed` m/s initial speed at `r angle` degrees on the Earth)
-
---- 
+---
 
 ## Purpose
 
-The app demonstrates the relationship in this simple physical experiment between inputs:
-
-  * initial speed
-  * angle of throw
-  * gravity
-
-and outputs:
-
-  * altitude reached
-  * horizontal distance covered
-  * time elapsed
-  * vertical speed
-
---- 
-
-## Functionality
-
-The app draws 4 plots that dynamically adapt to user input:
-
-  * altitude vs. horizontal distance
-  * vertical speed vs. horizontal distance
-  * altitude vs. time
-  * vertical speed vs. time
-
----
-
-## Usefulness
-
-Users can find out answers eg. for the following questions:
+Users can find out answers for the following questions and more:
 
   1. What is the best angle to throw the ball in order to make it land the farthest possible?
   1. Does initial speed affect the shape of the trajectory?
   1. How does the strength of gravity affect the time until the ball hits the ground?
+
+---
+
+## Acknowledgements
+
+Thanks to Louis A. Bloomfield's [How Things Work](https://www.coursera.org/course/howthingswork1) course for the idea.
+
+The app's [source is available on github](https://github.com/adoroszlai/DataProductsAssignment/tree/master).
