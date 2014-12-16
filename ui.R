@@ -22,7 +22,9 @@ shinyUI(fluidPage(
     ),
 
     mainPanel(
-      p("This app plots the trajectory of a ball thrown to the air.  You can control initial speed and the angle of the throw.  Select the Earth or the Moon for different gravitational environment."),
+      p("This app plots the trajectory of a ball thrown to the air."),
+      p("You can control initial speed and the angle of the throw using the sliders in the sidebar on the left.  Select the Earth or the Moon for different gravitational environment."),
+      p("The plots below show various aspects of the ball's motion for the inputs specified: altitude and vertical speed as functions of horizontal distance and time."),
       plotOutput("plot")
     )
   )
